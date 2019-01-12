@@ -43,6 +43,18 @@
 							<td><input id="heat" type="button" value="Click" onclick="theheat();" /></td>
 							
 						</tr>
+						
+						<tr>
+							<td>Oh my god!</td>
+							<td><input id="omg" type="button" value="Click" onclick="ohmygod();" /></td>
+							
+						</tr>
+						
+						<tr>
+							<td>Really bad boy</td>
+							<td><input id="rbb" type="button" value="Click" onclick="reallybadboy();" /></td>
+							
+						</tr>
 
 					</table>
 				</td>
@@ -142,6 +154,28 @@
 		},DATA_TIMEOUT);
 	}
 
+	function ohmygod(){
+		document.getElementById("omg").innerHTML = "Like a soldier!";
+		DB_REF.update({cont: "omg"});
+		//databasePush("tmw");
+		//possible remove this function \/ \/
+		setTimeout(function test(){
+			document.getElementById("omg").innerHTML = "---------------------------";
+			DB_REF.update({cont: "stop"});
+		},DATA_TIMEOUT);
+	}
+	
+	function reallybadboy(){
+		document.getElementById("rbb").innerHTML = "Like a soldier!";
+		DB_REF.update({cont: "rbb"});
+		//databasePush("tmw");
+		//possible remove this function \/ \/
+		setTimeout(function test(){
+			document.getElementById("rbb").innerHTML = "---------------------------";
+			DB_REF.update({cont: "stop"});
+		},DATA_TIMEOUT);
+	}
+	
 	function readFirebase(){
 		console.log("reading firebase...");
 		DB_REF.child("cont").on("value", function(snapshot){
@@ -176,6 +210,18 @@
 				case "heat" : 
 				document.getElementById("status").innerHTML = "It's damn hot in here.";
 				var audio = new Audio('audio/GGMYFTH.mp3');
+				audio.volume = 0.05;
+				audio.play();
+				break;
+				case "omg" : 
+				document.getElementById("status").innerHTML = "OH MAHY GAWD";
+				var audio = new Audio('audio/ohmygod.mp3');
+				audio.volume = 0.05;
+				audio.play();
+				break;
+				case "rbb" : 
+				document.getElementById("status").innerHTML = "Such a bad boy.";
+				var audio = new Audio('audio/rbb.mp3');
 				audio.volume = 0.05;
 				audio.play();
 				break;
