@@ -20,35 +20,30 @@
 						<tr>
 							<td>Tell Me Why</td>
 							<td><input id="tmw" type="button" value="Click" onclick="tellMeWHY();" /></td>
-							<td><p id="for">---------------------------</p></td>
-						</tr>
-						<!--
-						<tr>
-							<td>Backwards</td>
-							<td><input id="bacBut" type="button" value="Click" onclick="moveBackwards();" /></td>
-							<td><p id="bac">---------------------------</p></td>
+						
 						</tr>
 						<tr>
-							<td>Right Turn</td>
-							<td><input id="rigBut" type="button" value="Click" onclick="rightTurn();" /></td>
-							<td><p id="ritu">---------------------------</p></td>
+							<td>Ayo GG</td>
+							<td><input id="ayogg" type="button" value="Click" onclick="ayoGG();" /></td>
+							
 						</tr>
 						<tr>
-							<td>Left Turn</td>
-							<td><input id="lefBut" type="button" value="Click" onclick="leftTurn();" /></td>
-							<td><p id="letu">---------------------------</p></td>
+							<td>Butterfly Poop</td>
+							<td><input id="bpoop" type="button" value="Click" onclick="butterflyPoop();" /></td>
+							
 						</tr>
 						<tr>
-							<td>Servo Left</td>
-							<td><input id="SLeBut" type="button" value="Click" onclick="leftServo();" /></td>
-							<td><p id="lese">---------------------------</p></td>
+							<td>Bulldozer</td>
+							<td><input id="bdz" type="button" value="Click" onclick="bulldozer();" /></td>
+							
 						</tr>
+						
 						<tr>
-							<td>Servo Right</td>
-							<td><input id="SRiBut" type="button" value="Click" onclick="rightServo();" /></td>
-							<td><p id="rise">---------------------------</p></td>
+							<td>Feel the heat</td>
+							<td><input id="heat" type="button" value="Click" onclick="theheat();" /></td>
+							
 						</tr>
-						-->
+
 					</table>
 				</td>
 				<td>
@@ -103,6 +98,49 @@
 		},DATA_TIMEOUT);
 	}
 	
+	function ayoGG(){
+		document.getElementById("ayogg").innerHTML = "AYOOOO GG!!!";
+		DB_REF.update({cont: "ayogg"});
+		//databasePush("tmw");
+		//possible remove this function \/ \/
+		setTimeout(function test(){
+			document.getElementById("ayogg").innerHTML = "---------------------------";
+			DB_REF.update({cont: "stop"});
+		},DATA_TIMEOUT);
+	}
+	
+	function butterflyPoop(){
+		document.getElementById("bpoop").innerHTML = "Butterfly pooop.";
+		DB_REF.update({cont: "bpoop"});
+		//databasePush("tmw");
+		//possible remove this function \/ \/
+		setTimeout(function test(){
+			document.getElementById("bpoop").innerHTML = "---------------------------";
+			DB_REF.update({cont: "stop"});
+		},DATA_TIMEOUT);
+	}
+	
+	function bulldozer(){
+		document.getElementById("bdz").innerHTML = "Like a soldier!";
+		DB_REF.update({cont: "bdz"});
+		//databasePush("tmw");
+		//possible remove this function \/ \/
+		setTimeout(function test(){
+			document.getElementById("bdz").innerHTML = "---------------------------";
+			DB_REF.update({cont: "stop"});
+		},DATA_TIMEOUT);
+	}
+	
+	function theheat(){
+		document.getElementById("heat").innerHTML = "Like a soldier!";
+		DB_REF.update({cont: "heat"});
+		//databasePush("tmw");
+		//possible remove this function \/ \/
+		setTimeout(function test(){
+			document.getElementById("heat").innerHTML = "---------------------------";
+			DB_REF.update({cont: "stop"});
+		},DATA_TIMEOUT);
+	}
 
 	function readFirebase(){
 		console.log("reading firebase...");
@@ -116,8 +154,30 @@
 				var audio = new Audio('audio/tmwhy.mp3');
 				audio.volume = 0.05;
 				audio.play();
-				
-				
+				break;
+				case "ayogg" : 
+				document.getElementById("status").innerHTML = "She's a cat burglar.";
+				var audio = new Audio('audio/ayoGG.mp3');
+				audio.volume = 0.05;
+				audio.play();
+				break;
+				case "bpoop" : 
+				document.getElementById("status").innerHTML = "Stinky butterfly.";
+				var audio = new Audio('audio/butterflypoop.mp3');
+				audio.volume = 0.05;
+				audio.play();
+				break;
+				case "bdz" : 
+				document.getElementById("status").innerHTML = "Like a soldier!";
+				var audio = new Audio('audio/likabulldozer.mp3');
+				audio.volume = 0.05;
+				audio.play();
+				break;
+				case "heat" : 
+				document.getElementById("status").innerHTML = "It's damn hot in here.";
+				var audio = new Audio('audio/GGMYFTH.mp3');
+				audio.volume = 0.05;
+				audio.play();
 				break;
 				default :
 				document.getElementById("status").innerHTML = "Doing nothing.";
