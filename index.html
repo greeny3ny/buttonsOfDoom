@@ -19,42 +19,55 @@
 					<table style="width:50%" border="3">
 						<tr>
 							<td>Tell Me Why</td>
-							<td><input id="tmw" type="button" value="Click" onclick="tellMeWHY();" /></td>
+							<td><input id="tmw" type="button" value="Click" onclick="updateDatabase('tmw');" /></td>
 						
 						</tr>
 						<tr>
 							<td>Ayo GG</td>
-							<td><input id="ayogg" type="button" value="Click" onclick="ayoGG();" /></td>
+							<td><input id="ayogg" type="button" value="Click" onclick="updateDatabase('ayogg');" /></td>
 							
 						</tr>
 						<tr>
 							<td>Butterfly Poop</td>
-							<td><input id="bpoop" type="button" value="Click" onclick="butterflyPoop();" /></td>
+							<td><input id="bpoop" type="button" value="Click" onclick="updateDatabase('bpoop');" /></td>
 							
 						</tr>
 						<tr>
 							<td>Bulldozer</td>
-							<td><input id="bdz" type="button" value="Click" onclick="bulldozer();" /></td>
+							<td><input id="bdz" type="button" value="Click" onclick="updateDatabase('bdz');" /></td>
 							
 						</tr>
 						
 						<tr>
 							<td>Feel the heat</td>
-							<td><input id="heat" type="button" value="Click" onclick="theheat();" /></td>
+							<td><input id="heat" type="button" value="Click" onclick="updateDatabase('heat');" /></td>
 							
 						</tr>
 						
 						<tr>
 							<td>Oh my god!</td>
-							<td><input id="omg" type="button" value="Click" onclick="ohmygod();" /></td>
+							<td><input id="omg" type="button" value="Click" onclick="updateDatabase('omg');" /></td>
 							
 						</tr>
 						
 						<tr>
 							<td>Really bad boy</td>
-							<td><input id="rbb" type="button" value="Click" onclick="reallybadboy();" /></td>
+							<td><input id="rbb" type="button" value="Click" onclick="updateDatabase('rbb');" /></td>
 							
 						</tr>
+						
+						<tr>
+							<td>Power up</td>
+							<td><input id="pup" type="button" value="Click" onclick="updateDatabase('pup');" /></td>
+							
+						</tr>
+						
+						<tr>
+							<td>Banana</td>
+							<td><input id="banana" type="button" value="Click" onclick="updateDatabase('banana');" /></td>
+							
+						</tr>
+					
 
 					</table>
 				</td>
@@ -96,138 +109,80 @@
 
 	var offline = false;
 	const DATA_TIMEOUT = 2000;
-	readFirebase();
+	//readFirebase();
 	checkOnlineStatus();
 	
-	function tellMeWHY(){
-		document.getElementById("tmw").innerHTML = "TELL ME WHYYYYYYYYYYY";
-		DB_REF.update({cont: "tmw"});
-		//databasePush("tmw");
-		//possible remove this function \/ \/
+	function updateDatabase(input){
+		DB_REF.update({cont: input});
 		setTimeout(function test(){
-			document.getElementById("tmw").innerHTML = "---------------------------";
 			DB_REF.update({cont: "stop"});
 		},DATA_TIMEOUT);
 	}
-	
-	function ayoGG(){
-		document.getElementById("ayogg").innerHTML = "AYOOOO GG!!!";
-		DB_REF.update({cont: "ayogg"});
-		//databasePush("tmw");
-		//possible remove this function \/ \/
-		setTimeout(function test(){
-			document.getElementById("ayogg").innerHTML = "---------------------------";
-			DB_REF.update({cont: "stop"});
-		},DATA_TIMEOUT);
-	}
-	
-	function butterflyPoop(){
-		document.getElementById("bpoop").innerHTML = "Butterfly pooop.";
-		DB_REF.update({cont: "bpoop"});
-		//databasePush("tmw");
-		//possible remove this function \/ \/
-		setTimeout(function test(){
-			document.getElementById("bpoop").innerHTML = "---------------------------";
-			DB_REF.update({cont: "stop"});
-		},DATA_TIMEOUT);
-	}
-	
-	function bulldozer(){
-		document.getElementById("bdz").innerHTML = "Like a soldier!";
-		DB_REF.update({cont: "bdz"});
-		//databasePush("tmw");
-		//possible remove this function \/ \/
-		setTimeout(function test(){
-			document.getElementById("bdz").innerHTML = "---------------------------";
-			DB_REF.update({cont: "stop"});
-		},DATA_TIMEOUT);
-	}
-	
-	function theheat(){
-		document.getElementById("heat").innerHTML = "Like a soldier!";
-		DB_REF.update({cont: "heat"});
-		//databasePush("tmw");
-		//possible remove this function \/ \/
-		setTimeout(function test(){
-			document.getElementById("heat").innerHTML = "---------------------------";
-			DB_REF.update({cont: "stop"});
-		},DATA_TIMEOUT);
-	}
-
-	function ohmygod(){
-		document.getElementById("omg").innerHTML = "Like a soldier!";
-		DB_REF.update({cont: "omg"});
-		//databasePush("tmw");
-		//possible remove this function \/ \/
-		setTimeout(function test(){
-			document.getElementById("omg").innerHTML = "---------------------------";
-			DB_REF.update({cont: "stop"});
-		},DATA_TIMEOUT);
-	}
-	
-	function reallybadboy(){
-		document.getElementById("rbb").innerHTML = "Like a soldier!";
-		DB_REF.update({cont: "rbb"});
-		//databasePush("tmw");
-		//possible remove this function \/ \/
-		setTimeout(function test(){
-			document.getElementById("rbb").innerHTML = "---------------------------";
-			DB_REF.update({cont: "stop"});
-		},DATA_TIMEOUT);
-	}
-	
+		
 	function readFirebase(){
 		console.log("reading firebase...");
 		DB_REF.child("cont").on("value", function(snapshot){
 			console.log(snapshot.val());
 			var st = snapshot.val(); 
 			
+			var htmlOutput = "";
+			var audio = new Audio();
+			
 			switch (st){
 				case "tmw" : 
-				document.getElementById("status").innerHTML = "Telling you why.";
-				var audio = new Audio('audio/tmwhy.mp3');
-				audio.volume = 0.05;
-				audio.play();
-				break;
+					htmlOutput = "Telling you why.";
+					var audio = new Audio('audio/tmwhy.mp3');
+					buttonsStatus(false);
+					break;
 				case "ayogg" : 
-				document.getElementById("status").innerHTML = "She's a cat burglar.";
-				var audio = new Audio('audio/ayoGG.mp3');
-				audio.volume = 0.05;
-				audio.play();
-				break;
+					htmlOutput = "She's a cat burglar.";
+					var audio = new Audio('audio/ayoGG.mp3');
+					buttonsStatus(false);
+					break;
 				case "bpoop" : 
-				document.getElementById("status").innerHTML = "Stinky butterfly.";
-				var audio = new Audio('audio/butterflypoop.mp3');
-				audio.volume = 0.05;
-				audio.play();
-				break;
+					htmlOutput = "Stinky butterfly.";
+					var audio = new Audio('audio/butterflypoop.mp3');
+					buttonsStatus(false);
+					break;
 				case "bdz" : 
-				document.getElementById("status").innerHTML = "Like a soldier!";
-				var audio = new Audio('audio/likabulldozer.mp3');
-				audio.volume = 0.05;
-				audio.play();
-				break;
+					htmlOutput = "Like a soldier!";
+					var audio = new Audio('audio/likabulldozer.mp3');
+					buttonsStatus(false);
+					break;
 				case "heat" : 
-				document.getElementById("status").innerHTML = "It's damn hot in here.";
-				var audio = new Audio('audio/GGMYFTH.mp3');
-				audio.volume = 0.05;
-				audio.play();
-				break;
+					htmlOutput = "It's damn hot in here.";
+					var audio = new Audio('audio/GGMYFTH.mp3');
+					buttonsStatus(false);
+					break;
 				case "omg" : 
-				document.getElementById("status").innerHTML = "OH MAHY GAWD";
-				var audio = new Audio('audio/ohmygod.mp3');
-				audio.volume = 0.05;
-				audio.play();
-				break;
+					htmlOutput = "OH MAHY GAWD";
+					var audio = new Audio('audio/ohmygod.mp3');
+					buttonsStatus(false);
+					break;
 				case "rbb" : 
-				document.getElementById("status").innerHTML = "Such a bad boy.";
-				var audio = new Audio('audio/rbb.mp3');
-				audio.volume = 0.05;
-				audio.play();
-				break;
+					htmlOutput = "Such a bad boy.";
+					var audio = new Audio('audio/rbb.mp3');
+					buttonsStatus(false);
+					break;
+				case "pup" : 
+					htmlOutput = "Powering up...";
+					var audio = new Audio('audio/letspowerup.mp3');
+					buttonsStatus(false);
+					break;
+				case "banana" : 
+					htmlOutput = "BANANANANANANANANA";
+					var audio = new Audio('audio/banana.mp3');
+					buttonsStatus(false);
+					break;
 				default :
-				document.getElementById("status").innerHTML = "Doing nothing.";
+					htmlOutput = "Doing nothing.";
+					buttonsStatus(true);
+					break;
 			}
+			
+			document.getElementById("status").innerHTML = htmlOutput;
+			audio.volume = 0.05;
+			audio.play();
 			
 			//document.getElementById("status").innerHTML = "Current status : " + st;
 		});
@@ -248,6 +203,20 @@
 		document.getElementById("vid").src = "https://www.youtube.com/embed/rPleicjySdI";
 		readFirebase();
 		getVideo();
+	}
+	
+	function buttonsStatus(stat){
+		
+			document.getElementById("tmw").disabled = !stat;
+			document.getElementById("ayogg").disabled = !stat;
+			document.getElementById("bpoop").disabled = !stat;
+			document.getElementById("bdz").disabled = !stat;
+			document.getElementById("heat").disabled = !stat;
+			document.getElementById("omg").disabled = !stat;
+			document.getElementById("rbb").disabled = !stat;
+			document.getElementById("pup").disabled = !stat;
+			document.getElementById("banana").disabled = !stat;
+
 	}
 	
 	
