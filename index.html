@@ -67,6 +67,36 @@
 							<td><input id="banana" type="button" value="Click" onclick="updateDatabase('banana');" /></td>
 							
 						</tr>
+						
+						<tr>
+							<td>Let me introduce myself</td>
+							<td><input id="intro" type="button" value="Click" onclick="updateDatabase('intro');" /></td>
+							
+						</tr>
+						
+						<tr>
+							<td>Here comes trouble!</td>
+							<td><input id="trouble" type="button" value="Click" onclick="updateDatabase('trouble');" /></td>
+							
+						</tr>
+						
+						<tr>
+							<td>I got a boy</td>
+							<td><input id="boy" type="button" value="Click" onclick="updateDatabase('boy');" /></td>
+							
+						</tr>
+						
+						<tr>
+							<td>No no no</td>
+							<td><input id="nonono" type="button" value="Click" onclick="updateDatabase('nonono');" /></td>
+							
+						</tr>
+						
+						<tr>
+							<td>Gee gee gee</td>
+							<td><input id="gee" type="button" value="Click" onclick="updateDatabase('gee');" /></td>
+							
+						</tr>
 					
 
 					</table>
@@ -174,6 +204,31 @@
 					var audio = new Audio('audio/banana.mp3');
 					buttonsStatus(false);
 					break;
+				case "intro" : 
+					htmlOutput = "LEMME INTRODUCE MYSELF";
+					var audio = new Audio('audio/introduce.mp3');
+					buttonsStatus(false);
+					break;
+				case "trouble" : 
+					htmlOutput = "Heere comes trouble!";
+					var audio = new Audio('audio/trouble.mp3');
+					buttonsStatus(false);
+					break;
+				case "boy" : 
+					htmlOutput = "ON MY CHIN";
+					var audio = new Audio('audio/gotaboy.mp3');
+					buttonsStatus(false);
+					break;
+				case "nonono" : 
+					htmlOutput = "No no no no no";
+					var audio = new Audio('audio/nonono.mp3');
+					buttonsStatus(false);
+					break;
+				case "gee" : 
+					htmlOutput = "Gee gee gee gee geeeeeee";
+					var audio = new Audio('audio/geegee.mp3');
+					buttonsStatus(false);
+					break;
 				default :
 					htmlOutput = "Doing nothing.";
 					buttonsStatus(true);
@@ -216,6 +271,11 @@
 			document.getElementById("rbb").disabled = !stat;
 			document.getElementById("pup").disabled = !stat;
 			document.getElementById("banana").disabled = !stat;
+			document.getElementById("intro").disabled = !stat;
+			document.getElementById("trouble").disabled = !stat;
+			document.getElementById("boy").disabled = !stat;
+			document.getElementById("gee").disabled = !stat;
+			document.getElementById("nonono").disabled = !stat;
 
 	}
 	
