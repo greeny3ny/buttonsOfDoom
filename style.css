@@ -13,11 +13,26 @@ h1{
 input{
 	color:black;
 	background-color:#97bcfc;
-	border: 1;
-	width:100%;
+	border:0;
+	margin:1px;
+	width:48vw;
+	height: 7vh;
 	padding:10px;
 	display: inline-block;
-	border-radius: 10px;
+	border-radius: 0px;
 	border-color: white;
 	font-weight: 700;
+	
+}
+
+td{
+	width:0;
+}
+
+#s1{
+	float:left;
+}
+
+#s2{
+	float:right;
 }
