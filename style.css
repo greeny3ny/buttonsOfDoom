@@ -8,6 +8,7 @@ p {
 
 h1{
 	color:red;
+	font-size:5vh
 }
 
 input{
@@ -15,13 +16,18 @@ input{
 	background-color:#97bcfc;
 	border:0;
 	margin:1px;
-	width:94vw;
+	width:48vw;
 	height: 7vh;
 	padding:10px;
 	display: inline-block;
 
 	font-weight: 700;
 	
+}
+
+input:hover{
+	background-color:#688AF9;
+	cursor: pointer;
 }
 
 td{
