@@ -24,7 +24,7 @@
 	</head>
 
 	<body>
-		<h1>BUTTONS VER 1.5</h1>
+		<h1>BUTTONS VER 1.6</h1>
 	
 		<p id="test11">Craig's Buttons of Doom</p>
 		<p id="ver">Current Version : </p>
@@ -62,15 +62,14 @@
 		<input id="dalla1" type="button" value="Dalla Dalla 1" onclick="updateDatabase('dal1');" />
 		<input id="dalla2" type="button" value="Dalla Dalla 2" onclick="updateDatabase('dal2');" />
 		<input id="dalla3" type="button" value="Dalla Dalla 3" onclick="updateDatabase('dal3');" />
-		
 		<input id="plam" type="button" value="People look at me" onclick="updateDatabase('plam');" />
 		<input id="dontCare" type="button" value="I don't care" onclick="updateDatabase('dontCare');" />
-		
 		<input id="lovemyself" type="button" value="I love myself!" onclick="updateDatabase('lovemyself');" />
-		
 		<input id="badbad" type="button" value="Sorry I'm bad" onclick="updateDatabase('badbad');" />
 		<input id="jtwia" type="button" value="I'm just the way I am" onclick="updateDatabase('jtwia');" />
 		<input id="chinup" type="button" value="Chin Up" onclick="updateDatabase('chinup');" />
+		
+		<input id="trumpets" type="button" value="Trumpets" onclick="updateDatabase('trumpets');" />
 	</div>
 		
 					<!-- 
@@ -296,7 +295,12 @@
 					htmlOutput = "They creepin";
 					var audio = new Audio('audio/peopleLookAtMe.mp3');
 					buttonsStatus(false);
-					break;				
+					break;		
+				case "trumpets":
+					htmlOutput = "Hypetrain";
+					var audio = new Audio('audio/trumpets.mp3');
+					buttonsStatus(false);
+					break;											
 				default :
 					htmlOutput = "Doing nothing.";
 					buttonsStatus(true);
