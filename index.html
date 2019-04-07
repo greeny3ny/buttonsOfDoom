@@ -24,7 +24,7 @@
 	</head>
 
 	<body>
-		<h1>BUTTONS VER 1.6</h1>
+		<h1>BUTTONS VER 1.7</h1>
 	
 		<p id="test11">Craig's Buttons of Doom</p>
 		<p id="ver">Current Version : </p>
@@ -70,6 +70,10 @@
 		<input id="chinup" type="button" value="Chin Up" onclick="updateDatabase('chinup');" />
 		
 		<input id="trumpets" type="button" value="Trumpets" onclick="updateDatabase('trumpets');" />
+		
+		<input id="goodbye" type="button" value="Goodbye" onclick="updateDatabase('goodbye');" />
+		<input id="jyp" type="button" value="JYP" onclick="updateDatabase('jyp');" />
+		
 	</div>
 		
 					<!-- 
@@ -299,6 +303,16 @@
 				case "trumpets":
 					htmlOutput = "Hypetrain";
 					var audio = new Audio('audio/trumpets.mp3');
+					buttonsStatus(false);
+					break;
+			case "goodbye":
+					htmlOutput = "Really really good goodbye";
+					var audio = new Audio('audio/goodbye.mp3');
+					buttonsStatus(false);
+					break;
+			case "jyp":
+					htmlOutput = "*whispers* jay why pee";
+					var audio = new Audio('audio/jyp.mp3');
 					buttonsStatus(false);
 					break;											
 				default :
