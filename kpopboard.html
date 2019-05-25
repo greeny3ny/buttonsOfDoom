@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+	<head>
+	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		
+		<link rel="icon" sizes="192x192" href="icon.png" />
+		<link rel="apple-touch-icon" href="icon.png" />
+		<link rel="shortcut icon" href="weeicon.png" type="image/x-icon" />
+	
+	
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+		
+
+	
+		<title>BUTTONS OF DOOM</title>
+		<link href="html5reset.css" rel="stylesheet"/>
+		<link href="style.css" rel="stylesheet"/>
+	</head>
+
+	<body>
+	
+	
+		<h1>BUTTONS VER 1.7</h1>
+	
+		<p id="test11">Craig's Buttons of Doom</p>
+		<p id="ver">Current Version : </p>
+	
+	<div id="s1">
+		<input id="tmw" type="button" value="Tell Me Why" onclick="updateDatabase('tmw');" />			
+		<input id="ayogg" type="button" value="Ayo GG" onclick="updateDatabase('ayogg');" />
+		<input id="bpoop" type="button" value="Butterfly Poop" onclick="updateDatabase('bpoop');" />
+		<input id="bdz" type="button" value="Bulldozer" onclick="updateDatabase('bdz');" />
+		<input id="heat" type="button" value="The heat" onclick="updateDatabase('heat');" />
+		<input id="omg" type="button" value="Oh my god!" onclick="updateDatabase('omg');" />
+		<input id="rbb" type="button" value="Really Bad Boy" onclick="updateDatabase('rbb');" />
+		<input id="pup" type="button" value="Power up!" onclick="updateDatabase('pup');" />
+		<input id="banana" type="button" value="Banana" onclick="updateDatabase('banana');" />
+		<input id="intro" type="button" value="Introduce myself" onclick="updateDatabase('intro');" />
+		<input id="trouble" type="button" value="Trouble" onclick="updateDatabase('trouble');" />
+		<input id="boy" type="button" value="I got a boy" onclick="updateDatabase('boy');" />
+		<input id="nonono" type="button" value="No no no no no" onclick="updateDatabase('nonono');" />
+
+		
+		<input id="gee" type="button" value="Gee" onclick="updateDatabase('gee');" />
+		<input id="lilt" type="button" value="Lil' Touch" onclick="updateDatabase('lilt');" />
+		<input id="sap1" type="button" value="Sappy Boi" onclick="updateDatabase('sap1');" />
+		<input id="sap2" type="button" value="Cutie cutie" onclick="updateDatabase('sap2');" />
+		<input id="tellme" type="button" value="Tell Me" onclick="updateDatabase('tellme');" />
+		<input id="cjar" type="button" value="#CookieJar" onclick="updateDatabase('cjar');" />
+		<input id="cjar2" type="button" value="Hand in cookie jar" onclick="updateDatabase('cjar2');" />
+		<input id="kill" type="button" value="Kill Me" onclick="updateDatabase('kill');" />
+		<input id="heyboi" type="button" value="Hey Boi" onclick="updateDatabase('heyboi');" />
+		<input id="simple" type="button" value="Simple" onclick="updateDatabase('simple');" />
+		<input id="2choices" type="button" value="2 choices" onclick="updateDatabase('2choices');" />	
+		<input id="yes" type="button" value="Yes or yes" onclick="updateDatabase('yes');" />
+		
+		<!-- dalla dalla -->
+		<input id="dalla1" type="button" value="Dalla Dalla 1" onclick="updateDatabase('dal1');" />
+		<input id="dalla2" type="button" value="Dalla Dalla 2" onclick="updateDatabase('dal2');" />
+		<input id="dalla3" type="button" value="Dalla Dalla 3" onclick="updateDatabase('dal3');" />
+		<input id="plam" type="button" value="People look at me" onclick="updateDatabase('plam');" />
+		<input id="dontCare" type="button" value="I don't care" onclick="updateDatabase('dontCare');" />
+		<input id="lovemyself" type="button" value="I love myself!" onclick="updateDatabase('lovemyself');" />
+		<input id="badbad" type="button" value="Sorry I'm bad" onclick="updateDatabase('badbad');" />
+		<input id="jtwia" type="button" value="I'm just the way I am" onclick="updateDatabase('jtwia');" />
+		<input id="chinup" type="button" value="Chin Up" onclick="updateDatabase('chinup');" />
+		
+		<input id="trumpets" type="button" value="Trumpets" onclick="updateDatabase('trumpets');" />
+		
+		<input id="goodbye" type="button" value="Goodbye" onclick="updateDatabase('goodbye');" />
+		<input id="jyp" type="button" value="JYP" onclick="updateDatabase('jyp');" />
+		
+	</div>
+	
+	<input type="button" value="BACK" onclick="location.href='index.html';" />
+		
+					<!-- 
+						rPleicjySdI - Stand by
+						I9z0LvoFqHg - Happy Altspace
+						
+						LIVESTREAM LINK WILL NEED CHANGED WHEN OFFLINE / RESTARTED
+						CHANGE IT ON FIREBASE ! :)
+					--->
+					<iframe id="vid" width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+		<p id="status"> Current status : </p>
+		
+		<script src="mobileDetect.js"></script>
+		
+	</body>
+		
+</html>
+
+<script>
+
+  var config = {
+    apiKey: "AIzaSyBs6_28rLZsYzUg2S9GuhgOoLYPmhFnK0k",
+    authDomain: "buttonsofdoom-be3b7.firebaseapp.com",
+    databaseURL: "https://buttonsofdoom-be3b7.firebaseio.com",
+    projectId: "buttonsofdoom-be3b7",
+    storageBucket: "buttonsofdoom-be3b7.appspot.com",
+    messagingSenderId: "186775802804"
+  };
+
+	firebase.initializeApp(config);
+
+	const DB_REF = new Firebase("https://buttonsofdoom-be3b7.firebaseio.com");
+
+	var offline = false;
+	const DATA_TIMEOUT = 2000;
+	//readFirebase();
+	checkOnlineStatus();
+	
+	function updateDatabase(input){
+		DB_REF.update({cont: input});
+		setTimeout(function test(){
+			DB_REF.update({cont: "stop"});
+		},DATA_TIMEOUT);
+	}
+		
+	function readFirebase(){
+		console.log("reading firebase...");
+		DB_REF.child("cont").on("value", function(snapshot){
+			console.log(snapshot.val());
+			var st = snapshot.val(); 
+			
+			var htmlOutput = "";
+			var audio = new Audio();
+			
+			switch (st){
+				case "tmw" : 
+					htmlOutput = "Telling you why.";
+					var audio = new Audio('audio/tmwhy.mp3');
+					buttonsStatus(false);
+					break;
+				case "ayogg" : 
+					htmlOutput = "She's a cat burglar.";
+					var audio = new Audio('audio/ayoGG.mp3');
+					buttonsStatus(false);
+					break;
+				case "bpoop" : 
+					htmlOutput = "Stinky butterfly.";
+					var audio = new Audio('audio/butterflypoop.mp3');
+					buttonsStatus(false);
+					break;
+				case "bdz" : 
+					htmlOutput = "Like a soldier!";
+					var audio = new Audio('audio/likabulldozer.mp3');
+					buttonsStatus(false);
+					break;
+				case "heat" : 
+					htmlOutput = "It's damn hot in here.";
+					var audio = new Audio('audio/GGMYFTH.mp3');
+					buttonsStatus(false);
+					break;
+				case "omg" : 
+					htmlOutput = "OH MAHY GAWD";
+					var audio = new Audio('audio/ohmygod.mp3');
+					buttonsStatus(false);
+					break;
+				case "rbb" : 
+					htmlOutput = "Such a bad boy.";
+					var audio = new Audio('audio/rbb.mp3');
+					buttonsStatus(false);
+					break;
+				case "pup" : 
+					htmlOutput = "Powering up...";
+					var audio = new Audio('audio/letspowerup.mp3');
+					buttonsStatus(false);
+					break;
+				case "banana" : 
+					htmlOutput = "BANANANANANANANANA";
+					var audio = new Audio('audio/banana.mp3');
+					buttonsStatus(false);
+					break;
+				case "intro" : 
+					htmlOutput = "LEMME INTRODUCE MYSELF";
+					var audio = new Audio('audio/introduce.mp3');
+					buttonsStatus(false);
+					break;
+				case "trouble" : 
+					htmlOutput = "Heere comes trouble!";
+					var audio = new Audio('audio/trouble.mp3');
+					buttonsStatus(false);
+					break;
+				case "boy" : 
+					htmlOutput = "ON MY CHIN";
+					var audio = new Audio('audio/gotaboy.mp3');
+					buttonsStatus(false);
+					break;
+				case "nonono" : 
+					htmlOutput = "No no no no no";
+					var audio = new Audio('audio/nonono.mp3');
+					buttonsStatus(false);
+					break;
+				case "gee" : 
+					htmlOutput = "Gee gee gee gee geeeeeee";
+					var audio = new Audio('audio/geegee.mp3');
+					buttonsStatus(false);
+					break;
+				case "lilt" : 
+					htmlOutput = "Giving you a little touch ;D";
+					var audio = new Audio('audio/liltouch.mp3');
+					buttonsStatus(false);
+					break;
+				case "sap1" : 
+					htmlOutput = "Such a SAPPY SAPPY BOI";
+					var audio = new Audio('audio/sappy1.mp3');
+					buttonsStatus(false);
+					break;
+				case "sap2" : 
+					htmlOutput = "Cutie cutie";
+					var audio = new Audio('audio/sappy2.mp3');
+					buttonsStatus(false);
+					break;
+				case "tellme" : 
+					htmlOutput = "Tell ME ... why?";
+					var audio = new Audio('audio/tellme.mp3');
+					buttonsStatus(false);
+					break;
+				case "cjar" : 
+					htmlOutput = "#COOKIE JAR";
+					var audio = new Audio('audio/cookiejar.mp3');
+					buttonsStatus(false);
+					break;
+				case "cjar2" : 
+					htmlOutput = "Get ya hand in tha cookie jar";
+					var audio = new Audio('audio/handincookiejar.mp3');
+					buttonsStatus(false);
+					break;
+				case "kill" : 
+					htmlOutput = "Red Velvet WHAT?";
+					var audio = new Audio('audio/killme.mp3');
+					buttonsStatus(false);
+					break;
+				case "heyboi" : 
+					htmlOutput = "HAAAY BOOOI";
+					var audio = new Audio('audio/heyboi.mp3');
+					buttonsStatus(false);
+					break;
+				case "simple" : 
+					htmlOutput = "I'm gonna make this simple for you....";
+					var audio = new Audio('audio/simple.mp3');
+					buttonsStatus(false);
+					break;
+				case "2choices" : 
+					htmlOutput = "You got 2 choices...";
+					var audio = new Audio('audio/2choices.mp3');
+					buttonsStatus(false);
+					break;
+				case "yes" : 
+					htmlOutput = "How bout no?";
+					var audio = new Audio('audio/yesoryes.mp3');
+					buttonsStatus(false);
+					break;
+				case "dal1":
+					htmlOutput = "Dalla Dalla Bills Yo";
+					var audio = new Audio('audio/dalla1.mp3');
+					buttonsStatus(false);
+					break;
+				case "dontCare":
+					htmlOutput = "I don't care.";
+					var audio = new Audio('audio/dontCare.mp3');
+					buttonsStatus(false);
+					break;
+				case "lovemyself":
+					htmlOutput = "Ha. Gaaaaaaaay.";
+					var audio = new Audio('audio/loveMyself.mp3');
+					buttonsStatus(false);
+					break;
+				case "dal2":
+					htmlOutput = "Dalla Dalla Daaaaaalla";
+					var audio = new Audio('audio/dalla2.mp3');
+					buttonsStatus(false);
+					break;
+				case "dal3":
+					htmlOutput = "Dalla Dalla YEAH";
+					var audio = new Audio('audio/dalla3.mp3');
+					buttonsStatus(false);
+					break;
+				case "badbad":
+					htmlOutput = "Really bad girl?";
+					var audio = new Audio('audio/badbad.mp3');
+					buttonsStatus(false);
+					break;
+				case "jtwia":
+					htmlOutput = "I'm just the way I am";
+					var audio = new Audio('audio/justthewayiam.mp3');
+					buttonsStatus(false);
+					break;
+				case "chinup":
+					htmlOutput = "Get that chin up!";
+					var audio = new Audio('audio/chinup.mp3');
+					buttonsStatus(false);
+					break;
+				case "plam":
+					htmlOutput = "They creepin";
+					var audio = new Audio('audio/peopleLookAtMe.mp3');
+					buttonsStatus(false);
+					break;		
+				case "trumpets":
+					htmlOutput = "Hypetrain";
+					var audio = new Audio('audio/trumpets.mp3');
+					buttonsStatus(false);
+					break;
+			case "goodbye":
+					htmlOutput = "Really really good goodbye";
+					var audio = new Audio('audio/goodbye.mp3');
+					buttonsStatus(false);
+					break;
+			case "jyp":
+					htmlOutput = "*whispers* jay why pee";
+					var audio = new Audio('audio/jyp.mp3');
+					buttonsStatus(false);
+					break;											
+				default :
+					htmlOutput = "Doing nothing.";
+					buttonsStatus(true);
+					break;
+			}
+			
+			document.getElementById("status").innerHTML = htmlOutput;
+			audio.volume = 0.2;
+			audio.play();
+			
+			//document.getElementById("status").innerHTML = "Current status : " + st;
+		});
+	}
+
+	function getVideo(){
+		console.log("reading firebase...");
+		DB_REF.child("vidSrc").on("value", function(snapshot){
+			console.log(snapshot.val());
+			var st = snapshot.val(); 
+            var key =snapshot.val();
+			document.getElementById("vid").src = "https://www.youtube.com/embed/" + st;
+		});
+	}
+	
+	function getVersion(){
+		console.log("reading firebase...");
+		DB_REF.child("version").on("value", function(snapshot){
+			console.log(snapshot.val());
+			var st = snapshot.val(); 
+            var key =snapshot.val();
+			document.getElementById("ver").innerHTML = "Current Version : " + st;
+		});
+	}
+	
+	
+	function checkOnlineStatus(){
+		console.log("reading firebase...");
+		document.getElementById("vid").src = "https://www.youtube.com/embed/rPleicjySdI";
+		readFirebase();
+		getVideo();
+		getVersion();
+	}
+	
+	function buttonsStatus(stat){
+		
+		//this can be cleaned up...
+			document.getElementById("tmw").disabled = !stat;
+			document.getElementById("ayogg").disabled = !stat;
+			document.getElementById("bpoop").disabled = !stat;
+			document.getElementById("bdz").disabled = !stat;
+			document.getElementById("heat").disabled = !stat;
+			document.getElementById("omg").disabled = !stat;
+			document.getElementById("rbb").disabled = !stat;
+			document.getElementById("pup").disabled = !stat;
+			document.getElementById("banana").disabled = !stat;
+			document.getElementById("intro").disabled = !stat;
+			document.getElementById("trouble").disabled = !stat;
+			document.getElementById("boy").disabled = !stat;
+			document.getElementById("gee").disabled = !stat;
+			document.getElementById("nonono").disabled = !stat;
+			document.getElementById("lilt").disabled = !stat;
+			document.getElementById("sap1").disabled = !stat;
+			document.getElementById("sap2").disabled = !stat;
+			document.getElementById("tellme").disabled = !stat;
+			document.getElementById("cjar").disabled = !stat;
+			document.getElementById("cjar2").disabled = !stat;
+			document.getElementById("kill").disabled = !stat;
+			document.getElementById("heyboi").disabled = !stat;
+			document.getElementById("simple").disabled = !stat;
+			document.getElementById("2choices").disabled = !stat;
+			document.getElementById("yes").disabled = !stat;
+
+	}
+	
+	
+</script>

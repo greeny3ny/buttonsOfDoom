@@ -30,8 +30,8 @@
 		<p id="ver">Current Version : </p>
 	
 	<div id="s1">
-		<input type="button" value="KPOP Board" onclick="location.href='kpopboard.html';" />
-		<input type="button" value="Random Sounds" onclick="location.href='random.html';" />
+		<input type="button" value="Smelf Laugh" onclick="updateDatabase('smelf');" />
+		<input type="button" value="BACK" onclick="location.href='index.html';" />
 	</div>
 		
 					<!-- 
@@ -78,6 +78,35 @@
 		},DATA_TIMEOUT);
 	}
 		
+	function readFirebase(){
+		console.log("reading firebase...");
+		DB_REF.child("cont").on("value", function(snapshot){
+			console.log(snapshot.val());
+			var st = snapshot.val(); 
+			
+			var htmlOutput = "";
+			var audio = new Audio();
+			
+			switch (st){
+			case "smelf":
+					htmlOutput = "HEHEHEHE";
+					var audio = new Audio('audio/random/smelflaugh.mp3');
+					buttonsStatus(false);
+					break;											
+				default :
+					htmlOutput = "Doing nothing.";
+					buttonsStatus(true);
+					break;
+			}
+			
+			document.getElementById("status").innerHTML = htmlOutput;
+			audio.volume = 0.2;
+			audio.play();
+			
+			//document.getElementById("status").innerHTML = "Current status : " + st;
+		});
+	}
+
 	function getVideo(){
 		console.log("reading firebase...");
 		DB_REF.child("vidSrc").on("value", function(snapshot){
@@ -102,10 +131,17 @@
 	function checkOnlineStatus(){
 		console.log("reading firebase...");
 		document.getElementById("vid").src = "https://www.youtube.com/embed/rPleicjySdI";
+		readFirebase();
 		getVideo();
 		getVersion();
 	}
 	
+	function buttonsStatus(stat){
+		
+	
+	
+
+	}
 	
 	
 </script>
