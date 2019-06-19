@@ -76,9 +76,17 @@
 		<input id="goodbye" type="button" value="Goodbye" onclick="updateDatabase('goodbye');" />
 		<input id="jyp" type="button" value="JYP" onclick="updateDatabase('jyp');" />
 		
+		<!-- zimzalabim -->
+		<input id="you ready" type="button" value="Ready" onclick="updateDatabase('ready1');" />
+		<input id="zzbim1" type="button" value="Zimzalabim 1" onclick="updateDatabase('zzbim1');" />
+		<input id="zzbim2" type="button" value="Zimzalabim 2" onclick="updateDatabase('zzbim2');" />
+		
+		<input id="zzbim3" type="button" value="Zimzalabim Long" onclick="updateDatabase('zzbim3');" />
+		<input id="nana" type="button" value="NANANANANANA" onclick="updateDatabase('nana');" />
+		
 	</div>
 	
-	<input type="button" value="BACK" onclick="location.href='index.html';" />
+	<input id="backButton" type="button" value="BACK" style="background-color:#d641f4;" onclick="location.href='index.html';" />
 		
 					<!-- 
 						rPleicjySdI - Stand by
@@ -86,9 +94,9 @@
 						
 						LIVESTREAM LINK WILL NEED CHANGED WHEN OFFLINE / RESTARTED
 						CHANGE IT ON FIREBASE ! :)
-					--->
+					
 					<iframe id="vid" width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+--->
 		<p id="status"> Current status : </p>
 		
 		<script src="mobileDetect.js"></script>
@@ -312,13 +320,47 @@
 			case "goodbye":
 					htmlOutput = "Really really good goodbye";
 					var audio = new Audio('audio/goodbye.mp3');
-					buttonsStatus(false);
+				
 					break;
 			case "jyp":
 					htmlOutput = "*whispers* jay why pee";
 					var audio = new Audio('audio/jyp.mp3');
-					buttonsStatus(false);
-					break;											
+					
+					break;	
+
+					//ZIMZALABIM
+			case "ready1":
+					htmlOutput = "I'm ready!";
+					var audio = new Audio('audio/youreadyforthis.mp3');
+					
+					break;	
+					
+					case "zzbim1":
+					htmlOutput = "ZIMZALABIM ZIM ZIMZALABIM";
+					var audio = new Audio('audio/zzbim1.mp3');
+		
+					break;	
+					case "zzbim2":
+					htmlOutput = "ZIMZALABIM ZIM ZIMZALABIM";
+					var audio = new Audio('audio/zzbim2.mp3');
+					
+					break;	
+					
+					case "zzbim3":
+					htmlOutput = "ZIMZALABIM ZIM ZIMZALABIM";
+					var audio = new Audio('audio/zzbim3.mp3');
+				
+					break;	
+					
+					case "nana":
+					htmlOutput = "NANANANANA NANANANAAAAAAAA";
+					var audio = new Audio('audio/nana.mp3');
+			
+					break;	
+
+
+
+					
 				default :
 					htmlOutput = "Doing nothing.";
 					buttonsStatus(true);
@@ -339,7 +381,7 @@
 			console.log(snapshot.val());
 			var st = snapshot.val(); 
             var key =snapshot.val();
-			document.getElementById("vid").src = "https://www.youtube.com/embed/" + st;
+			//document.getElementById("vid").src = "https://www.youtube.com/embed/" + st;
 		});
 	}
 	
@@ -356,40 +398,14 @@
 	
 	function checkOnlineStatus(){
 		console.log("reading firebase...");
-		document.getElementById("vid").src = "https://www.youtube.com/embed/rPleicjySdI";
+		//document.getElementById("vid").src = "https://www.youtube.com/embed/rPleicjySdI";
 		readFirebase();
 		getVideo();
 		getVersion();
 	}
 	
 	function buttonsStatus(stat){
-		
-		//this can be cleaned up...
-			document.getElementById("tmw").disabled = !stat;
-			document.getElementById("ayogg").disabled = !stat;
-			document.getElementById("bpoop").disabled = !stat;
-			document.getElementById("bdz").disabled = !stat;
-			document.getElementById("heat").disabled = !stat;
-			document.getElementById("omg").disabled = !stat;
-			document.getElementById("rbb").disabled = !stat;
-			document.getElementById("pup").disabled = !stat;
-			document.getElementById("banana").disabled = !stat;
-			document.getElementById("intro").disabled = !stat;
-			document.getElementById("trouble").disabled = !stat;
-			document.getElementById("boy").disabled = !stat;
-			document.getElementById("gee").disabled = !stat;
-			document.getElementById("nonono").disabled = !stat;
-			document.getElementById("lilt").disabled = !stat;
-			document.getElementById("sap1").disabled = !stat;
-			document.getElementById("sap2").disabled = !stat;
-			document.getElementById("tellme").disabled = !stat;
-			document.getElementById("cjar").disabled = !stat;
-			document.getElementById("cjar2").disabled = !stat;
-			document.getElementById("kill").disabled = !stat;
-			document.getElementById("heyboi").disabled = !stat;
-			document.getElementById("simple").disabled = !stat;
-			document.getElementById("2choices").disabled = !stat;
-			document.getElementById("yes").disabled = !stat;
+	
 
 	}
 	
